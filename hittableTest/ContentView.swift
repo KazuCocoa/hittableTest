@@ -8,18 +8,31 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var showingPopover = true
+
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-
-            // to push the element to out of screen
-            Spacer()
-                .frame(height: 1000.0)
-
             Text("Hello, world!")
-//                .accessibilityHidden(true)
+            //                .accessibilityHidden(true)
+                .popover(isPresented: $showingPopover) {
+                    Text("Big Button")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity, maxHeight: 100)
+                        .background(Color.blue)
+                        .cornerRadius(15)
+                        .overlay {
+                                Color.blue
+                                    .opacity(0.2)
+                            }
+                    .font(.headline)
+                    .padding()
+                }
 
         }
         .padding()
