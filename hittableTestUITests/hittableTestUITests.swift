@@ -27,6 +27,11 @@ final class hittableTestUITests: XCTestCase {
         // UI tests must launch the application that they test.
         let app = XCUIApplication()
         app.launch()
+        
+        let e = app.staticTexts["Hello, world!"]
+
+        XCTAssertTrue(e.exists)
+        XCTAssertTrue(e.isHittable)
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
