@@ -13,8 +13,13 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
+
+            // to push the element to out of screen
+            Spacer()
+                .frame(height: 1000.0)
+
             Text("Hello, world!")
-                .accessibilityHidden(true)
+//                .accessibilityHidden(true)
 
         }
         .padding()
