@@ -16,7 +16,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
-            //                .accessibilityHidden(true)
+//                .accessibilityHidden(true)
                 .popover(isPresented: $showingPopover) {
                     Text("Big Button")
                         .font(.title)

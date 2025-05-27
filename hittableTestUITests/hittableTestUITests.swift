@@ -28,19 +28,24 @@ final class hittableTestUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
         
-        let e = app.staticTexts["Hello, world!"]
+        let allElements = app.descendants(matching: .any)
+        var allHittableElements = [XCUIElement]()
+        var allHittableElementLabels = [String]()
 
-        XCTAssertTrue(e.exists)
-        XCTAssertTrue(e.isHittable)
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    @MainActor
-    func testLaunchPerformance() throws {
-        // This measures how long it takes to launch your application.
-        measure(metrics: [XCTApplicationLaunchMetric()]) {
-            XCUIApplication().launch()
+        if app.isHittable {
+            allHittableElementLabels.append(app.label)
+            allHittableElements.append(app)
         }
+        for i in 0..<allElements.count {
+            let element = allElements.element(boundBy: i)
+            if element.isHittable {
+                allHittableElementLabels.append(element.label)
+                allHittableElements.append(element)
+            }
+        }
+        XCTAssertEqual(allHittableElements.count, 10)
+        XCTAssertEqual(allHittableElementLabels, [
+            "hittableTest", "", "", "", "", "", "", "", "", "Big Button"
+        ])
     }
 }
