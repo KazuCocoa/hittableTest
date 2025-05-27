@@ -43,9 +43,24 @@ final class hittableTestUITests: XCTestCase {
                 allHittableElements.append(element)
             }
         }
-        XCTAssertEqual(allHittableElements.count, 10)
+
+        // with 'popover'
+        // XCTAssertEqual(allHittableElements.count, 10)
+        // XCTAssertEqual(allHittableElementLabels, [
+        //     "hittableTest", "", "", "", "", "", "", "", "", "Big Button"
+        // ])
+
+        // without 'popover' and no accessibilityHidden(true)
+        // XCTAssertEqual(allHittableElements.count, 8)
+        // XCTAssertEqual(allHittableElementLabels, [
+        //     "hittableTest", "", "", "", "", "", "Globe", "Hello, world!"
+        // ])
+
+        // without 'popover' and with accessibilityHidden(true) for "Hello, world!"
+        XCTAssertEqual(allHittableElements.count, 7)
         XCTAssertEqual(allHittableElementLabels, [
-            "hittableTest", "", "", "", "", "", "", "", "", "Big Button"
+            "hittableTest", "", "", "", "", "", "Globe"
         ])
+
     }
 }
